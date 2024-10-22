@@ -52,7 +52,7 @@ export default function Home() {
 
   const fetchProduct = async (code) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/product?barcode=${code}`);
+      const response = await axios.get(`http://localhost:8000/product?barcode=${code}`);
       setProduct(response.data);
       setError('');
     } catch (error) {
@@ -74,7 +74,7 @@ export default function Home() {
 
   const checkout = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/checkout', { cart });
+      const response = await axios.post('http://localhost:8000/checkout', { cart });
       alert(`合計金額（税込）: ${response.data.total}, 合計金額（税抜）: ${response.data.totalExcludingTax}`);
       setCart([]);
       setTotal(0);
